@@ -1,0 +1,11 @@
+// night-pulse.strudel: a darker, steady pulse for mysteries and "did you know" reels.
+// Original example for content-factory. MIT licence (see LICENSE at the repo root).
+// Uses only built-in synths.
+
+setcpm(96 / 4)
+
+stack(
+  note("a1*8").s("sawtooth").lpf(sine.range(300, 900).slow(8)).decay(0.1).sustain(0).gain(0.3),
+  note("<[a2,c3,e3] [f2,a2,c3] [d2,f2,a2] [e2,g#2,b2]>").s("triangle").attack(0.6).release(1.5).gain(0.2).room(0.6),
+  note("~ e4 ~ ~ ~ c4 ~ ~").s("sine").gain(0.1).delay(0.4)
+)

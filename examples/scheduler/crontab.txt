@@ -1,0 +1,6 @@
+# Run the Content Factory publish queue every 10 minutes (Linux or macOS cron).
+# Edit with `crontab -e`. Replace /path/to/content-factory and the node path (`which node`).
+# cron has a minimal environment: settings come from config/factory.config.json and the repo's .env file.
+# Only APPROVED items that are due are posted; drafts are never touched.
+
+*/10 * * * * cd /path/to/content-factory && mkdir -p publish/logs && /usr/local/bin/node factory.mjs publish run >> publish/logs/run.log 2>&1

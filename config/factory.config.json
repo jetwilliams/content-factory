@@ -1,0 +1,101 @@
+{
+  "$comment": "Defaults for every job. Override per job with jobs/<slug>/config.json (deep-merged). Keys and secrets never go here: they go in .env.",
+  "providers": {
+    "$comment": "SWAP ANY PROVIDER HERE. Each name is a file in providers/<kind>/<name>.mjs. --dry-run uses the 'dry' adapter of every kind. Env vars CF_LLM_PROVIDER / CF_TTS_PROVIDER / CF_MUSIC_PROVIDER / CF_CAPTIONS_PROVIDER / CF_PUBLISHER override for one run.",
+    "llm": "openai-compatible",
+    "$llm": "dry | openai-compatible (hosted API, router, or a local server such as Ollama: the default base URL) | command (any CLI)",
+    "tts": "piper",
+    "$tts": "dry | piper (free, local) | command (any TTS CLI)",
+    "visuals": {
+      "placeholder": "dry",
+      "folder": "folder",
+      "stock": "pexels",
+      "ai": "openai-images"
+    },
+    "$visuals": "maps each script visual.source to an adapter: dry | folder | pexels | openai-images | command",
+    "music": "strudel-command",
+    "$music": "dry | none | strudel-command (default engine, your own renderer) | wav-folder | file | command (other engines or an AI music API)",
+    "musicFallback": "dry",
+    "$musicFallback": "used when the music adapter is not set up yet (for example no Strudel renderer installed); \"none\" to fail instead",
+    "captions": "even-split",
+    "$captions": "dry | even-split (free, local) | command (any aligner / speech-to-text that outputs word times)",
+    "publisher": "dry",
+    "$publisher": "dry (default: never posts, only prints what it would send) | upload-post (paid API, keys in .env) | your own adapter (copy providers/publisher/template.mjs). Used by `node factory.mjs publish run` AFTER a human approves."
+  },
+  "research": {
+    "maxSourceChars": 6000,
+    "sourcesFile": ""
+  },
+  "script": {
+    "minBeats": 4,
+    "maxBeats": 8,
+    "maxVoiceWordsPerBeat": 30,
+    "maxOnScreenChars": 48,
+    "maxTitleChars": 40,
+    "targetSeconds": 30,
+    "audience": "curious general audience",
+    "tone": "clear and friendly",
+    "ctaHint": "a short, honest call to action"
+  },
+  "visuals": {
+    "defaultSource": "placeholder",
+    "folder": "",
+    "spendCapUsd": 0,
+    "$spendCapUsd": "per-run cap for paid visual calls. 0 = no paid calls at all.",
+    "prices": {
+      "openai-images": null,
+      "command": null
+    },
+    "$prices": "USD per call for paid adapters. null = unknown, so paid calls are refused. Check your provider's current pricing.",
+    "imageSize": "1024x1536"
+  },
+  "voice": {
+    "gapSec": 0.12,
+    "tailSec": 0.4,
+    "placeholderWordsPerSec": 4.0
+  },
+  "music": {
+    "pattern": "examples/strudel/calm-tide.strudel",
+    "folder": "",
+    "track": "",
+    "file": "",
+    "prompt": "",
+    "licence": "",
+    "pricePerCall": null,
+    "spendCapUsd": 0
+  },
+  "captions": {
+    "wordsPerCaption": 2
+  },
+  "render": {
+    "template": "templates/default.template.json"
+  },
+  "qa": {
+    "minDurationSec": 3,
+    "maxDurationSec": 60,
+    "loudnessToleranceLu": 2.5
+  },
+  "handoff": {
+    "$comment": "Step 9 adds the finished video to the publish queue as a DRAFT with these defaults. A human previews and approves it.",
+    "platforms": "instagram,tiktok,youtube",
+    "at": "+2h"
+  },
+  "publish": {
+    "$comment": "The publish queue and its approval gate. Paths are relative to the repo root. Env CF_PUBLISH_QUEUE / CF_PUBLISH_STATS / CF_PUBLISH_LOG_FILE override.",
+    "queue": "publish/queue/queue.json",
+    "stats": "publish/data/stats.jsonl",
+    "logFile": "",
+    "upload-post": {
+      "$comment": "Non-secret Upload-Post options. UPLOAD_POST_API_KEY and UPLOAD_POST_USER go in .env. An UPLOAD_POST_* env var overrides each option.",
+      "aiLabel": true,
+      "$aiLabel": "true = mark posts as AI-generated where the platform supports it. Keep it on when the voice or visuals are synthetic.",
+      "igShareToFeed": true,
+      "tiktokPrivacy": "",
+      "$tiktokPrivacy": "e.g. PUBLIC_TO_EVERYONE or SELF_ONLY; empty = the account default",
+      "youtubePrivacy": "public",
+      "youtubeCategory": "22",
+      "pollEverySec": 10,
+      "pollMaxMin": 10
+    }
+  }
+}

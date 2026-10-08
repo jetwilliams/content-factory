@@ -1,0 +1,15 @@
+// calm-tide.strudel: a slow, quiet bed for explainers.
+// Original example for content-factory. MIT licence (see LICENSE at the repo root).
+// Paste into the Strudel REPL (https://strudel.cc) to hear it. Uses only built-in synths.
+
+setcpm(70 / 4)
+
+stack(
+  // soft chords, one per bar
+  note("<[c3,e3,g3,b3] [a2,c3,e3,g3] [f2,a2,c3,e3] [g2,b2,d3,f3]>")
+    .s("triangle").attack(0.4).release(1.2).lpf(1400).gain(0.25).room(0.5),
+  // a simple root-note bass
+  note("<c2 a1 f1 g1>").s("sine").gain(0.35),
+  // a gentle arpeggio on top
+  note("<c4 e4 g4 e4>*4").s("sine").decay(0.2).sustain(0).gain(0.12).delay(0.25)
+)

@@ -1,0 +1,44 @@
+{
+  "topic": "how tides work",
+  "title": "Why two tides a day?",
+  "hook": {
+    "voice": "Why two tides a day?",
+    "onScreen": "Why two tides a day?",
+    "visual": { "source": "placeholder", "query": "ocean shoreline tide", "prompt": "a calm shoreline at dusk, wet sand reflecting the sky" }
+  },
+  "beats": [
+    {
+      "voice": "The Moon pulls the near ocean most.",
+      "onScreen": "Moon pulls the near side most",
+      "visual": { "source": "placeholder", "query": "moon over sea", "prompt": "the Moon low over a dark sea" }
+    },
+    {
+      "voice": "The far side, least. Two bulges.",
+      "onScreen": "Far side pulled least = 2nd bulge",
+      "visual": { "source": "placeholder", "query": "earth from space ocean", "prompt": "simple diagram-style view of Earth with two ocean bulges, no text" }
+    },
+    {
+      "voice": "Earth spins through both each day.",
+      "onScreen": "We rotate through both bulges",
+      "visual": { "source": "placeholder", "query": "time lapse tide harbour", "prompt": "a harbour at low tide, boats resting on mud" }
+    },
+    {
+      "voice": "Sun lines up? Bigger spring tides.",
+      "onScreen": "Sun + Moon aligned = spring tides",
+      "visual": { "source": "placeholder", "query": "full moon sea waves", "prompt": "a full moon above high water on a rocky coast" }
+    }
+  ],
+  "cta": {
+    "voice": "Follow for more.",
+    "onScreen": "Follow for more"
+  },
+  "post": {
+    "caption": "Why most coasts get two high tides a day: the Moon pulls the near ocean most and the far ocean least, and Earth turns through both bulges.",
+    "tags": ["science", "ocean", "tides", "explainer"]
+  },
+  "factCheck": {
+    "status": "unchecked",
+    "by": "",
+    "notes": "Example script. Verify against notes.md sources before using it for real."
+  }
+}

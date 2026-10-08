@@ -1,0 +1,17 @@
+# systemd (user) service + timer: runs `node factory.mjs publish run` every 10 minutes.
+#   mkdir -p ~/.config/systemd/user
+#   cp content-factory-publish.service content-factory-publish.timer ~/.config/systemd/user/
+#   (edit the paths below)
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now content-factory-publish.timer
+#   loginctl enable-linger "$USER"     # keep running when you are logged out
+#   journalctl --user -u content-factory-publish   # logs
+# Only APPROVED items that are due are posted; drafts are never touched.
+
+[Unit]
+Description=Content Factory: post due, human-approved videos
+
+[Service]
+Type=oneshot
+WorkingDirectory=/path/to/content-factory
+ExecStart=/usr/bin/node /path/to/content-factory/factory.mjs publish run

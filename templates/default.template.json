@@ -1,0 +1,62 @@
+{
+  "$comment": "Render template. Copy to jobs/<slug>/template.json (or point config.render.template at your own) to change the look. Colours are #RRGGBB or #RRGGBBAA. No brand is baked in.",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "safeArea": {
+    "top": 220,
+    "bottom": 380,
+    "left": 70,
+    "right": 70
+  },
+  "text": {
+    "engine": "auto",
+    "$engine": "auto = ffmpeg drawtext + libass when your ffmpeg has them, otherwise the built-in pixel font. Force with \"ffmpeg\" or \"pixel\".",
+    "fontFile": "",
+    "fontFamily": "Sans"
+  },
+  "title": {
+    "show": "hook",
+    "$show": "hook = while the hook line is spoken; a number = that many seconds; \"none\" = no plate",
+    "y": 300,
+    "fontSize": 84,
+    "maxCharsPerLine": 16,
+    "maxLines": 2,
+    "textColour": "#FFFFFF",
+    "plateColour": "#1B2A41",
+    "platePadding": 36
+  },
+  "captions": {
+    "fontSize": 72,
+    "textColour": "#FFFFFF",
+    "outlineColour": "#000000",
+    "outline": 5,
+    "marginBottom": 120,
+    "uppercase": true
+  },
+  "watermark": {
+    "text": "",
+    "$text": "Optional. Your own handle or site, set by you. Empty = no watermark.",
+    "fontSize": 36,
+    "textColour": "#FFFFFFCC",
+    "position": "bottom",
+    "margin": 60
+  },
+  "audio": {
+    "musicGainDb": -14,
+    "ducking": "sidechain",
+    "$ducking": "sidechain = music dips under the voice; static = music stays at musicGainDb; none = no music",
+    "duckThreshold": 0.03,
+    "duckRatio": 8,
+    "loudnessTarget": -14,
+    "truePeak": -1.5
+  },
+  "encoder": {
+    "preset": "veryfast",
+    "crf": 26,
+    "threads": 2,
+    "audioBitrate": "160k"
+  }
+}

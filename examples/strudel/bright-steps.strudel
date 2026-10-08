@@ -1,0 +1,12 @@
+// bright-steps.strudel: an upbeat, light groove for quick facts.
+// Original example for content-factory. MIT licence (see LICENSE at the repo root).
+// The drum sounds load Strudel's default sample bank: check its licence notes before publishing.
+
+setcpm(112 / 4)
+
+stack(
+  s("bd ~ bd ~, ~ sd ~ sd, hh*8").gain(0.5),
+  note("<[d3,f#3,a3] [b2,d3,f#3] [g2,b2,d3] [a2,c#3,e3]>")
+    .s("square").lpf(1200).decay(0.15).sustain(0.2).gain(0.18).struct("x ~ x x ~ x ~ x"),
+  note("<d2 b1 g1 a1>").s("sawtooth").lpf(500).gain(0.3)
+)
