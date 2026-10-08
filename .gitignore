@@ -1,0 +1,24 @@
+# job folders and generated media
+jobs/
+*.wav
+*.mp3
+*.mp4
+*.mov
+*.webm
+# tiny committed samples may be force-added: git add -f examples/assets/<file>
+
+# publish stage: local queue, logs and stats (never commit)
+publish/queue/
+publish/logs/
+publish/data/
+*.tmp
+
+# secrets
+.env
+.env.*
+!.env.example
+
+# misc
+node_modules/
+.DS_Store
+*.log
